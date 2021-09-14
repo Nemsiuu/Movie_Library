@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+{% block title %}<title>Biblioteka Filmów</title>{% endblock %}
+{% block content %}
+  <h1>Movie library</h1>
+  <p>Welcome to LocalLibrary, a website developed by <em>Bartosz</em>!</p>
+  <h2>Dynamic content</h2>
+  <p>The library has the following record counts:</p>
+  <ul>
+    <li><strong>Movies:</strong> {{ num_movies }}</li>
+    <li><strong>Copies:</strong> {{ num_instances }}</li>
+    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
+    <li><strong>Authors:</strong> {{ num_authors }}</li>
+    <li><strong>Actors:</strong> {{ num_actors }}</li>
+    <li><strong>Genres:</strong> {{ num_genres }}</li>
+    <li><strong>Funny:</strong> {{ num_funny }}</li>
+  </ul>
+  <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.</p>
+{% endblock %}
