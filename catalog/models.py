@@ -25,7 +25,7 @@ class Movie(models.Model):
     # Foreign Key used because book can only have one author, but authors can have multiple books
     # Author as a string rather than object because it hasn't been declared yet in the file
     author = models.ForeignKey('Author', on_delete=models.SET_NULL, null=True)
-    actor = models.ManyToManyField('Actor', help_text='Add actor to this movie', null=True)
+    actor = models.ManyToManyField('Actor', help_text='Add actor to this movie')
     release = models.IntegerField('Release', help_text='Year of Movie release',null=True)
     summary = models.TextField(max_length=1000, help_text='Enter a brief description of the movie')
     imdb = models.CharField('IMDb', max_length=13, unique=True,

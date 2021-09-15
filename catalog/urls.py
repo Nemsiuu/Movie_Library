@@ -20,4 +20,5 @@ urlpatterns = [
     path('movie/create/', views.MovieCreate.as_view(), name='movie-create'),
     path('movie/<int:pk>/update/', views.MovieUpdate.as_view(), name='movie-update'),
     path('movie/<int:pk>/delete/', views.MovieDelete.as_view(), name='movie-delete'),
+    path('signup/', views.signup, name='signup'),
 ]
