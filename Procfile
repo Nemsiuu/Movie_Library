@@ -1,1 +1,1 @@
-web: gunicorn Movielibrary.wsgi --log-file -
+web: gunicorn bibliotekafilmowa.wsgi --log-file -
