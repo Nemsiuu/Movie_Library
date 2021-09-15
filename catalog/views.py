@@ -22,14 +22,14 @@ from catalog.forms import SignUpForm
 def index(request):
     """View function for home page of site."""
 
-    # Generate counts of some of the main objects
+    
     num_movies = Movie.objects.all().count()
     num_instances = MovieInstance.objects.all().count()
 
-    # Available books (status = 'a')
+    
     num_instances_available = MovieInstance.objects.filter(status__exact='a').count()
 
-    # The 'all()' is implied by default.
+    
     num_genres = Genre.objects.count()   
     num_authors = Author.objects.count()
     num_actors = Actor.objects.count()
@@ -45,7 +45,7 @@ def index(request):
         'num_visits': num_visits,
     }
 
-    # Render the HTML template index.html with the data in the context variable
+    
     return render(request, 'index.html', context=context)
 
 from django.views import generic
@@ -109,22 +109,22 @@ def renew_movie_librarian(request, pk):
     """View function for renewing a specific BookInstance by librarian."""
     movie_instance = get_object_or_404(MovieInstance, pk=pk)
 
-    # If this is a POST request then process the Form data
+    
     if request.method == 'POST':
 
-        # Create a form instance and populate it with data from the request (binding):
+       
         form = RenewMovieForm(request.POST)
 
-        # Check if the form is valid:
+       
         if form.is_valid():
-            # process the data in form.cleaned_data as required (here we just write it to the model due_back field)
+            
             movie_instance.due_back = form.cleaned_data['renewal_date']
             movie_instance.save()
 
-            # redirect to a new URL:
+           
             return HttpResponseRedirect(reverse('all-borrowed') )
 
-    # If this is a GET (or any other method) create the default form.
+    
     else:
         proposed_renewal_date = datetime.date.today() + datetime.timedelta(weeks=3)
         form = RenewMovieForm(initial={'renewal_date': proposed_renewal_date})
@@ -143,7 +143,7 @@ class AuthorCreate(CreateView):
 
 class AuthorUpdate(UpdateView):
     model = Author
-    fields = '__all__' # Not recommended (potential security issue if more fields added)
+    fields = '__all__' 
 
 class AuthorDelete(DeleteView):
     model = Author
@@ -158,7 +158,7 @@ class MovieCreate(CreateView):
 
 class MovieUpdate(UpdateView):
     model = Movie
-    fields = '__all__' # Not recommended (potential security issue if more fields added)
+    fields = '__all__' 
 
 class MovieDelete(DeleteView):
     model = Movie
